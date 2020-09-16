@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
+import { MatSelectModule } from '@angular/material/select';
 
 
 
@@ -20,7 +21,8 @@ import { MatTableModule } from '@angular/material/table';
     MatFormFieldModule,
     MatButtonModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule
   ],
   imports: [
     CommonModule

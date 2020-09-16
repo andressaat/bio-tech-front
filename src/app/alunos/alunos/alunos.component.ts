@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlunosService } from '../alunos.service';
 import { Aluno } from '../aluno';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-alunos',
@@ -12,7 +13,11 @@ export class AlunosComponent implements OnInit {
   alunos: Aluno[] = [];
   displayedColumns: string[] = ['id', 'nome', 'actions'];
 
-  constructor(private service: AlunosService) { }
+  constructor(
+    private service: AlunosService,
+    private route:ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.service.listAll().subscribe(results => {
@@ -22,7 +27,7 @@ export class AlunosComponent implements OnInit {
   }
 
   onAdd(): void {
-    console.log('Add');
+    this.router.navigate(['create'],{relativeTo:this.route});
   }
 
   onEdit(product: Aluno): void {
