@@ -18,6 +18,11 @@ export class AlunosService {
 
   listAll(): Observable<Aluno[]> {
     return this.http
-      .get<Aluno[]>(`${environment.API_ENDPOINT}/alunos`);
+    .get<Aluno[]>(`${environment.API_ENDPOINT}/alunos`);
+  }
+
+  save(aluno: Aluno){
+    return this.http
+    .post(`${environment.API_ENDPOINT}/alunos`, aluno);
   }
 }
