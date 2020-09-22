@@ -7,11 +7,21 @@
           <input matInput formControlName="nome" placeholder="Nome">
         </mat-form-field>
         
-
         <mat-form-field class="example-full-width">
+          <mat-label>Data Inicio</mat-label>
+          <input
+          matInput
+          [matDatepicker]="dataInicio"
+          formControlName="dataInicio"
+          placeholder="Data Inicio"
+          >
+        <mat-datepicker-toggle matSuffix [for]="dataInicio"></mat-datepicker-toggle>
+        <mat-datepicker #dataInicio></mat-datepicker>
+      </mat-form-field>
+        <!-- <mat-form-field class="example-full-width">
             <mat-label>Data Inicio</mat-label>
             <input matInput formControlName="dataInicio" placeholder="Data Inicio">
-          </mat-form-field>
+          </mat-form-field> -->
           
           <mat-form-field class="example-full-width">
             <mat-label>CPF</mat-label>
@@ -28,26 +38,19 @@
             <input matInput formControlName="endereco" placeholder="Endereço">
           </mat-form-field>
           
-          <!-- <mat-form-field class="example-full-width">
+           
+          <mat-form-field class="example-full-width">
             <mat-label>Data de Nascimento</mat-label>
-            <input matInput formControlName="dataNascimento" placeholder="Data de Nascimento">
-          </mat-form-field> -->
-          <mat-form-field>
             <input
             matInput
             [matDatepicker]="dataNascimento"
             formControlName="dataNascimento"
+            placeholder="Data de Nascimento"
             >
           <mat-datepicker-toggle matSuffix [for]="dataNascimento"></mat-datepicker-toggle>
           <mat-datepicker #dataNascimento></mat-datepicker>
         </mat-form-field>
-          <!-- <mat-form-field class="example-full-width">
-            <mat-label>Data de Nascimento</mat-label>
-            <input matInput [matDatepicker]="picker" formControlName="dataNascimento">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
-          </mat-form-field> -->
-          
+                 
           <mat-form-field class="example-full-width">
             <mat-label>Telefone</mat-label>
             <input matInput formControlName="telefone" placeholder="Telefone">
@@ -75,7 +78,7 @@
       </form>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="save()">Save</button>
+      <button mat-raised-button color="primary" (click)="save()">Salvar</button>
       <button mat-raised-button>Cancel</button>
     </mat-card-actions>
   </mat-card>

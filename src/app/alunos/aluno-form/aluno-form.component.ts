@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PacotesService } from '../../shared/pacotes.service'
 import { Pacote } from '../../shared/pacote'
 import { AlunosService } from '../alunos.service';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 @Component({
   selector: 'app-aluno-form',
   templateUrl: './aluno-form.component.html',
@@ -12,11 +13,14 @@ export class AlunoFormComponent implements OnInit {
 
   form: FormGroup;
   pacotes:Pacote []= [];
+  alunoId:number|null = null;
 
   constructor(
     private fb: FormBuilder, 
     private alunosService: AlunosService,
-    private pacotesService: PacotesService
+    private pacotesService: PacotesService,
+    private route: ActivatedRoute,
+    private router: Router
   ) { 
     this.form = this.fb.group({
       nome: [null, Validators.required],
@@ -33,6 +37,10 @@ export class AlunoFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.route.params.subscribe((params: Params) => {
+      params['id'];
+    });
+
     this.pacotesService.listAll().subscribe((pacotes)=>{
       this.pacotes = pacotes;
     })
@@ -46,5 +54,6 @@ export class AlunoFormComponent implements OnInit {
       });
     }
   }
+
 
 }

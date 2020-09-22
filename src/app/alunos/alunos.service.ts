@@ -25,4 +25,9 @@ export class AlunosService {
     return this.http
     .post(`${environment.API_ENDPOINT}/alunos`, aluno);
   }
+    delete(id: number){
+      return this.http
+    .delete(`${environment.API_ENDPOINT}/alunos/${id}`);
+
+    }
 }

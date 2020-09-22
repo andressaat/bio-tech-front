@@ -16,7 +16,8 @@ export class AlunosComponent implements OnInit {
   constructor(
     private service: AlunosService,
     private route:ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private alunosService: AlunosService
   ) { }
 
   ngOnInit(): void {
@@ -30,12 +31,16 @@ export class AlunosComponent implements OnInit {
     this.router.navigate(['create'],{relativeTo:this.route});
   }
 
-  onEdit(product: Aluno): void {
-    console.log(product);
+  onEdit(aluno: Aluno): void {
+    this.router.navigate(['edit', aluno.id],{relativeTo:this.route});
   }
 
-  onRemove(product: Aluno): void {
-    console.log(product);
+  onRemove(aluno: Aluno): void {
+      this.alunosService.delete(aluno.id).subscribe((deletar)=>{
+        console.log(deletar)
+      });
+      
+    
   }
 
 }

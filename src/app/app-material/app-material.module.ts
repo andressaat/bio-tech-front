@@ -10,8 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { NativeDateModule } from '@angular/material/core/datetime';
-
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -26,7 +25,7 @@ import { NativeDateModule } from '@angular/material/core/datetime';
     MatIconModule,
     MatSelectModule,
     MatDatepickerModule,
-    NativeDateModule
+    MatNativeDateModule 
   ],
   imports: [
     CommonModule
