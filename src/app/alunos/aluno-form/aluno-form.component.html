@@ -1,5 +1,5 @@
 <mat-card>
-    <mat-toolbar color="primary">Cadastro de Aluno</mat-toolbar>
+    <mat-toolbar color="primary">{{alunoId?'Editar Aluno':'Cadastrar Aluno'}}</mat-toolbar>
     <mat-card-content>
       <form class="example-form" [formGroup]="form">
         <mat-form-field class="example-full-width">

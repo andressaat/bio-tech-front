@@ -23,11 +23,21 @@ export class AlunosService {
 
   save(aluno: Aluno){
     return this.http
-    .post(`${environment.API_ENDPOINT}/alunos`, aluno);
+     .post(`${environment.API_ENDPOINT}/alunos`, aluno);
   }
-    delete(id: number){
-      return this.http
-    .delete(`${environment.API_ENDPOINT}/alunos/${id}`);
 
-    }
+  delete(id: number){
+    return this.http
+     .delete(`${environment.API_ENDPOINT}/alunos/${id}`);
+  }
+
+  getAluno(id: number){
+    return this.http
+      .get(`${environment.API_ENDPOINT}/alunos/${id}`);
+  }
+
+  update(id: number, aluno:Aluno){
+    return this.http
+      .patch(`${environment.API_ENDPOINT}/alunos/${id}`,aluno);
+  }
 }
