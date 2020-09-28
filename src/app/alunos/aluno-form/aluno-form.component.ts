@@ -68,9 +68,12 @@ export class AlunoFormComponent implements OnInit {
           console.log(created);
         });
       }
-      this.router.navigateByUrl(this.returnUrl)
+      this.router.navigateByUrl(this.returnUrl);
     }
   }
 
+  cancel(){
+    this.router.navigateByUrl(this.returnUrl)
+  }
 
 }
