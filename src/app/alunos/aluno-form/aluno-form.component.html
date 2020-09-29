@@ -1,5 +1,6 @@
-<mat-card>
-    <mat-toolbar color="primary">Cadastro de Aluno</mat-toolbar>
+<div class="aluno-form-flex">
+<mat-card >
+    <mat-toolbar color="primary-dark">{{alunoId?'Editar Aluno':'Cadastrar Aluno'}}</mat-toolbar>
     <mat-card-content>
       <form class="example-form" [formGroup]="form">
         <mat-form-field class="example-full-width">
@@ -7,11 +8,21 @@
           <input matInput formControlName="nome" placeholder="Nome">
         </mat-form-field>
         
-
         <mat-form-field class="example-full-width">
+          <mat-label>Data Inicio</mat-label>
+          <input
+          matInput
+          [matDatepicker]="dataInicio"
+          formControlName="dataInicio"
+          placeholder="Data Inicio"
+          >
+        <mat-datepicker-toggle matSuffix [for]="dataInicio"></mat-datepicker-toggle>
+        <mat-datepicker #dataInicio></mat-datepicker>
+      </mat-form-field>
+        <!-- <mat-form-field class="example-full-width">
             <mat-label>Data Inicio</mat-label>
             <input matInput formControlName="dataInicio" placeholder="Data Inicio">
-          </mat-form-field>
+          </mat-form-field> -->
           
           <mat-form-field class="example-full-width">
             <mat-label>CPF</mat-label>
@@ -28,11 +39,19 @@
             <input matInput formControlName="endereco" placeholder="Endereço">
           </mat-form-field>
           
+           
           <mat-form-field class="example-full-width">
             <mat-label>Data de Nascimento</mat-label>
-            <input matInput formControlName="dataNascimento" placeholder="Data de Nascimento">
-          </mat-form-field>
-          
+            <input
+            matInput
+            [matDatepicker]="dataNascimento"
+            formControlName="dataNascimento"
+            placeholder="Data de Nascimento"
+            >
+          <mat-datepicker-toggle matSuffix [for]="dataNascimento"></mat-datepicker-toggle>
+          <mat-datepicker #dataNascimento></mat-datepicker>
+        </mat-form-field>
+                 
           <mat-form-field class="example-full-width">
             <mat-label>Telefone</mat-label>
             <input matInput formControlName="telefone" placeholder="Telefone">
@@ -51,8 +70,8 @@
           <mat-form-field class="example-full-width">
             <mat-label>Plano</mat-label>
             <mat-select formControlName="pacoteId"> 
-              <mat-option *ngFor="let plano of planos" [value]="plano.id">
-                {{plano.nome}}
+              <mat-option *ngFor="let pacote of pacotes" [value]="pacote.id">
+                {{pacote.nome}}
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -60,7 +79,8 @@
       </form>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary">Save</button>
-      <button mat-raised-button>Cancel</button>
+      <button mat-raised-button color="primary" (click)="save()">Salvar</button>
+      <button mat-raised-button (click)="cancel()" >Cancel</button>
     </mat-card-actions>
   </mat-card>
+</div>

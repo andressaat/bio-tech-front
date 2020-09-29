@@ -18,6 +18,26 @@ export class AlunosService {
 
   listAll(): Observable<Aluno[]> {
     return this.http
-      .get<Aluno[]>(`${environment.API_ENDPOINT}/alunos`);
+    .get<Aluno[]>(`${environment.API_ENDPOINT}/alunos`);
+  }
+
+  save(aluno: Aluno){
+    return this.http
+     .post(`${environment.API_ENDPOINT}/alunos`, aluno);
+  }
+
+  delete(id: number){
+    return this.http
+     .delete(`${environment.API_ENDPOINT}/alunos/${id}`);
+  }
+
+  getAluno(id: number){
+    return this.http
+      .get(`${environment.API_ENDPOINT}/alunos/${id}`);
+  }
+
+  update(id: number, aluno:Aluno){
+    return this.http
+      .patch(`${environment.API_ENDPOINT}/alunos/${id}`,aluno);
   }
 }
