@@ -8,9 +8,9 @@
         <mat-form-field class="full-width-input">
           <input matInput
                  placeholder="User"
-                 formControlName="login"
+                 formControlName="email"
                  required>
-          <mat-error *ngIf="isFieldInvalid('login')">
+          <mat-error *ngIf="isFieldInvalid('email')">
             Informe seu nome de usuário
           </mat-error>
         </mat-form-field>
@@ -18,9 +18,9 @@
           <input matInput
                  type="password"
                  placeholder="Password"
-                 formControlName="senha"
+                 formControlName="password"
                  required>
-          <mat-error *ngIf="isFieldInvalid('login')">
+          <mat-error *ngIf="isFieldInvalid('password')">
             Por favor informe sua senha
           </mat-error>
         </mat-form-field>
