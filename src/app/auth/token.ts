@@ -1,10 +1,15 @@
 import { User } from './user';
 
 export interface Token {
-  token?: string;
-  access_token: string;
-  refresh_token: string;
-  token_type: string;
-  expires_in: number;
-  user: User;
+  accessToken: string;
+  refreshToken: string;
+}
+
+export interface JWTDecoded {
+  email: string;
+  exp?: number;
+  iat: number;
+  id: string;
+  name?: string;
+  role?: string;
 }

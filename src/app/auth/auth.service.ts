@@ -3,7 +3,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Credentials, User } from './user';
-import { Token } from './token';
+import { JWTDecoded, Token } from './token';
+import decode from 'jwt-decode';
 
 import { environment } from '../../environments/environment';
 @Injectable({
@@ -12,9 +13,8 @@ import { environment } from '../../environments/environment';
 export class AuthService  {
 
   private loggedIn = new BehaviorSubject<boolean>(false);
-
   private currentToken = new BehaviorSubject<Token>(undefined);
-  private token: Token;
+  private currentJWT = new BehaviorSubject<JWTDecoded>(undefined);
 
   get isLoggedIn(): Observable<boolean> {
     return this.loggedIn.asObservable();
@@ -28,6 +28,30 @@ export class AuthService  {
     public http: HttpClient,
     private router: Router
   ) {
+    let token: Token;
+
+    try{
+     token  = JSON.parse(localStorage.getItem('token'));
+    }catch (err){
+      localStorage.removeItem('token');
+      token = undefined;
+    }
+
+    if (token){
+      const decoded: JWTDecoded = decode(token.accessToken);
+      this.currentJWT.next(decoded);
+      const { exp } = decoded;
+      console.log(new Date(exp * 1000));
+      if (exp && Date.now() >= exp * 1000) {
+        console.log('token is expired');
+        this.loggedIn.next(false);
+        this.currentToken.next(undefined);
+      } else {
+        console.log('token is not expired');
+        this.loggedIn.next(true);
+        this.currentToken.next(token);
+      }
+    }
    }
 
   login(credentials: Credentials): void {
@@ -35,8 +59,7 @@ export class AuthService  {
       this.oauth(credentials).subscribe((token) => {
         this.loggedIn.next(true);
         this.currentToken.next(token);
-        this.token = token;
-        localStorage.setItem('token', token.token);
+        localStorage.setItem('token', JSON.stringify(token));
         this.router.navigate(['/']);
       });
     }
@@ -49,7 +72,7 @@ export class AuthService  {
 
   private oauth(credentials: Credentials): Observable<Token> {
       return this.http
-        .post<Token>(`${environment.API_ENDPOINT}/users/login`, credentials);
+        .post<Token>(`${environment.API_ENDPOINT}/users/refresh-login`, credentials);
       // .pipe(catchError(this.handleError<Token>('oauth')));
   }
 
