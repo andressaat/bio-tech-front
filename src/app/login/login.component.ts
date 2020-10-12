@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from './../auth/auth.service';
 
 @Component({
@@ -14,13 +15,14 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    public snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      login: ['', Validators.required],
-      senha: ['', Validators.required]
+      email: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
 
@@ -34,6 +36,8 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
     if (this.form.valid) {
       this.authService.login(this.form.value);
+    }else{
+      this.snackBar.open('preencha os campos', undefined, { duration: 8000, verticalPosition: 'bottom', panelClass: ['snack-error'] });
     }
     this.formSubmitAttempt = true;
   }

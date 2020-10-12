@@ -1,5 +1,16 @@
+export declare type Credentials = {
+  email: string;
+  password: string;
+};
+
 export interface User {
-  nome: string;
-  login: string;
-  senha: string;
+  id ?: string;
+  name?: string;
+  username?: string;
+  email?: string;
+  emailVerified?: string;
+  verificationToken?: string;
+  role?: string;
+  createdAt?: string;
+  updatedAt?: string;
 }

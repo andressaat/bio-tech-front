@@ -1,41 +1,23 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
-import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home/home.component';
-import { LoginLayoutComponent } from './layouts/login-layout/login-layout.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginLayoutComponent,
+    loadChildren: () =>
+      import('./layout/layout.module').then((m) => m.LayoutModule),
     canActivate: [AuthGuard],
-    children: [
-      {
-        path: '',
-        component: HomeComponent
-      }
-    ]
   },
   {
-    path: '',
-    component: LoginLayoutComponent,
-    children: [
-      {
-        path: 'login',
-        component: LoginComponent
-      }
-    ]
+    path: 'login',
+    loadChildren: () =>
+      import('./login/login.module').then((m) => m.LoginModule),
   },
-  {
-    path: 'alunos',
-    loadChildren: () => import('./alunos/alunos.module').then(m => m.AlunosModule)
-  },
-  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, { enableTracing: false })],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -1,0 +1,121 @@
+<div class="aluno-form-flex">
+  <mat-card>
+    <mat-toolbar color="primary-dark">{{pagamentoId ?'Editar Pagamento':'Cadastrar Pagamento'}}</mat-toolbar>
+    <mat-card-content>
+      <form class="example-form"
+            [formGroup]="form">
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Aluno</mat-label>
+          <mat-select formControlName="alunoId">
+            <mat-option *ngFor="let alunos of alunos"
+                        [value]="alunos.id">
+              {{alunos.nome}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Valor Pago</mat-label>
+          <input currencyMask
+                 matInput
+                 formControlName="valorPago"
+                 placeholder="Valor Pago">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Forma Pagamento</mat-label>
+          <mat-select formControlName="formaPagamento">
+            <mat-option *ngFor="let forma of formasPagamento"
+                        [value]="forma">
+              {{forma}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Data Vencimento</mat-label>
+          <input matInput
+                 [matDatepicker]="dataVencimento"
+                 formControlName="dataVencimento"
+                 placeholder="Data Vencimento">
+          <mat-datepicker-toggle matSuffix
+                                 [for]="dataVencimento"></mat-datepicker-toggle>
+          <mat-datepicker #dataVencimento></mat-datepicker>
+        </mat-form-field>
+
+        <!-- <mat-form-field class="example-full-width">
+          <mat-label>CPF</mat-label>
+          <input matInput
+                 formControlName="cpf"
+                 placeholder="CPF">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>RG</mat-label>
+          <input matInput
+                 formControlName="rg"
+                 placeholder="RG">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Endereço</mat-label>
+          <input matInput
+                 formControlName="endereco"
+                 placeholder="Endereço">
+        </mat-form-field>
+
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Data de Nascimento</mat-label>
+          <input matInput
+                 [matDatepicker]="dataNascimento"
+                 formControlName="dataNascimento"
+                 placeholder="Data de Nascimento">
+          <mat-datepicker-toggle matSuffix
+                                 [for]="dataNascimento"></mat-datepicker-toggle>
+          <mat-datepicker #dataNascimento></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Telefone</mat-label>
+          <input matInput
+                 formControlName="telefone"
+                 placeholder="Telefone">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Obs</mat-label>
+          <input matInput
+                 formControlName="observacaoes"
+                 placeholder="Observaçaoes">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Objetivo</mat-label>
+          <input matInput
+                 formControlName="objetivo"
+                 placeholder="Objetivo">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Plano</mat-label>
+          <mat-select formControlName="pacoteId">
+            <mat-option *ngFor="let pacote of pacotes"
+                        [value]="pacote.id">
+              {{pacote.nome}} - R$ {{pacote.valor}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field> -->
+
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button
+              color="primary"
+              (click)="save()">Salvar</button>
+      <button mat-raised-button
+              (click)="cancel()">Cancel</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
