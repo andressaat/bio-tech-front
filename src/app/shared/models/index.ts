@@ -3,3 +3,7 @@ export * from './icons';
 export * from './aluno';
 export * from './pacote';
 export * from './pagamento';
+export * from './exercicio';
+export * from './grupo-muscular';
+export * from './treino';
+export * from './treino-exercicio';

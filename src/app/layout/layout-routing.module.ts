@@ -31,6 +31,7 @@ const routes: Routes = [
           allowedRoles: ['atendente', 'gerente'],
         },
       },
+      { path: 'treinos', loadChildren: () => import('./treinos/treinos.module').then(m => m.TreinosModule) },
     ],
   },
 ];

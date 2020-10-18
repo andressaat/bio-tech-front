@@ -39,3 +39,14 @@ ng g service shared/services/pacotes
 ng g pipe shared/pipes/DateFormat
 
 atendente@biotech.com.br 12345678
+
+# Treinos
+
+ng generate module layout/treinos --route treinos --module layout/layout.module
+ng generate component layout/treinos/components/treino-stepper
+ng g service shared/services/exercicios
+ng g service shared/services/Treino
+ng g service shared/services/GruposMusculares
+
+<https://dev.to/usmslm102/containerizing-angular-application-for-production-using-docker-3mhi>
+<https://medium.com/@wkrzywiec/build-and-run-angular-application-in-a-docker-container-b65dbbc50be8>
