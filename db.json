@@ -1,0 +1,104 @@
+{
+  "consultas": [
+    {
+      "id": 1,
+      "nome": "Dr. Leandro Cavalcante",
+      "especialidade": "Cardiolodia",
+      "inicioConsulta": "2020-09-25T00:30:53.431Z",
+      "fimConsulta": "2020-09-25T00:30:53.431Z",
+      "descricao": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also"
+    }
+  ],
+  "exercicios": [
+    {
+      "id": 1,
+      "nome": "Supino Reto"
+    },
+    {
+      "id": 2,
+      "nome": "Supino Inclinado"
+    },
+    {
+      "id": 3,
+      "nome": "Supino Declinado"
+    },
+    {
+      "id": 4,
+      "nome": "Crucifixo"
+    },
+    {
+      "id": 5,
+      "nome": "Voador"
+    },
+    {
+      "id": 6,
+      "nome": "Cross-over"
+    }
+  ],
+  "exercicio_grupos_musculares": [
+    {
+      "id": 1,
+      "exercicioId": 1,
+      "gruposMuscularId": 1
+    },
+    {
+      "id": 2,
+      "exercicioId": 2,
+      "gruposMuscularId": 1
+    },
+    {
+      "id": 3,
+      "exercicioId": 3,
+      "gruposMuscularId": 1
+    },
+    {
+      "id": 3,
+      "exercicioId": 4,
+      "gruposMuscularId": 1
+    },
+    {
+      "id": 5,
+      "exercicioId": 5,
+      "gruposMuscularId": 1
+    },
+    {
+      "id": 6,
+      "exercicioId": 6,
+      "gruposMuscularId": 1
+    }
+  ],
+  "grupos_musculares": [
+    {
+      "id": 1,
+      "nome": "Peito"
+    },
+    {
+      "id": 2,
+      "nome": "Costas"
+    },
+    {
+      "id": 3,
+      "nome": "Perna"
+    },
+    {
+      "id": 4,
+      "nome": "Glúteo"
+    },
+    {
+      "id": 5,
+      "nome": "Ombro"
+    },
+    {
+      "id": 6,
+      "nome": "Bíceps"
+    },
+    {
+      "id": 7,
+      "nome": "Tríceps"
+    },
+    {
+      "id": 8,
+      "nome": "Outros"
+    }
+  ]
+}

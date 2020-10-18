@@ -18,7 +18,13 @@
       <th mat-header-cell
           *matHeaderCellDef> Nome </th>
       <td mat-cell
-          *matCellDef="let element"> {{ element.nome }} </td>
+          *matCellDef="let element">
+        {{ element.nome }}
+        <a [routerLink]="['/alunos', element.id]"
+           [state]="{id: element.id}">
+          <mat-icon matListAvatar>account_box</mat-icon>
+        </a>
+      </td>
     </ng-container>
 
     <!-- Name Column -->

@@ -1,0 +1,118 @@
+<div class="aluno-form-flex">
+
+  <mat-card flex-gt-sm>
+    <mat-card flex-gt-sm>
+      <mat-card-title>{{aluno?.nome}}</mat-card-title>
+      <mat-card-subtitle># {{aluno?.id}}</mat-card-subtitle>
+      <mat-divider></mat-divider>
+      <mat-list>
+        <h3 matSubheader>Dados</h3>
+        <mat-list-item>
+          <mat-icon matListAvatar>account_box</mat-icon>
+          <h4 matLine>{{aluno?.nome}}</h4>
+          <p matLine>Aluno</p>
+        </mat-list-item>
+        <mat-divider matInset></mat-divider>
+        <mat-list-item>
+          <mat-icon matListAvatar>description</mat-icon>
+          <h4 matLine>{{aluno?.cpf}}</h4>
+          <p matLine>CPF</p>
+        </mat-list-item>
+        <mat-divider matInset></mat-divider>
+        <mat-list-item>
+          <mat-icon matListAvatar>check_circle_outline</mat-icon>
+          <h4 matLine>{{aluno?.objetivo}}</h4>
+          <p matLine>Objetivo</p>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <h3 matSubheader>Datas</h3>
+        <mat-list-item>
+          <mat-icon matListAvatar>access_time</mat-icon>
+          <h4 matLine>{{aluno?.updatedAt | dateTimeFormat}}</h4>
+          <p matLine>Ultima atualização</p>
+        </mat-list-item>
+        <mat-divider matInset></mat-divider>
+        <mat-list-item>
+          <mat-icon matListAvatar>today</mat-icon>
+          <h4 matLine>{{aluno?.dataNascimento | dateFormat}}</h4>
+          <p matLine>Aniversario</p>
+        </mat-list-item>
+      </mat-list>
+      <mat-divider></mat-divider>
+      <!-- <mat-card-actions>
+      <button mat-button
+              color="accent"
+              class="text-upper">Edit</button>
+    </mat-card-actions> -->
+    </mat-card>
+  </mat-card>
+
+
+  <mat-card flex-gt-sm>
+    <p class="mat-headline">
+      Treino: {{treino?.nome}}
+    </p>
+    <p>
+      Inicio: {{treino?.dataInicio | dateFormat}} - Fim: {{treino?.dataTermino | dateFormat}}
+    </p>
+    <div fxLayout="row"
+         fxLayout.lt-md="column"
+         fxLayoutGap="20px"
+         fxLayoutGap.lt-md="0px">
+
+      <div *ngFor="let day of weekdays; let i = index">
+        <mat-checkbox class="example-margin"
+                      [checked]="isChecked(i + 1)"
+                      [disabled]="true">
+          {{day}}
+        </mat-checkbox>
+      </div>
+    </div>
+    <br>
+    <!-- Tabela -->
+    <table mat-table
+           [dataSource]="dataSource"
+           class="mat-elevation-z8">
+
+      <!-- Conteudo das linhas -->
+
+      <ng-container *ngFor="let col of displayedColumns"
+                    [matColumnDef]="col">
+        <th mat-header-cell
+            *matHeaderCellDef>{{ col | titlecase }}</th>
+        <td mat-cell
+            *matCellDef="let row">{{ row[col] }}</td>
+      </ng-container>
+
+      <!-- Default Table lines -->
+      <tr mat-header-row
+          *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row
+          *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <!-- Group header cells-->
+      <ng-container matColumnDef="groupHeader">
+        <td colspan="999"
+            mat-cell
+            *matCellDef="let group">
+          <div>
+            <!-- <mat-icon *ngIf="!group.reduced">expand_less</mat-icon>
+                <mat-icon *ngIf="group.reduced">expand_more</mat-icon> -->
+            <strong>{{group.groupName}}</strong>
+          </div>
+        </td>
+      </ng-container>
+
+      <!-- Group line -->
+      <tr mat-row
+          class="clickable"
+          *matRowDef="let row; columns: ['groupHeader']; when: isGroup">
+        <!-- PODERIA EXPADIR E CONTRAIR OS GRUPOS, MAS TEM UM BUG no INDEX -->
+        <!-- (click)="reduceGroup(row)" -->
+      </tr>
+
+    </table>
+    <!-- Tabela -->
+  </mat-card>
+
+</div>

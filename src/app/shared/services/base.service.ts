@@ -19,7 +19,7 @@ export abstract class BaseService {
    * @param result - optional value to return as the observable result
    */
   // tslint:disable-next-line: ban-types
-  public handleError<T>(operation = 'operation', result?: T): Function {
+  public handleError<T>(operation = 'operation', result?: T): (err: any, caught: Observable<T>) => Observable<any> {
     return (error: any): Observable<T> => {
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead

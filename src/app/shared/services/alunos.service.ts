@@ -1,25 +1,30 @@
 import { Injectable } from '@angular/core';
-import { Aluno } from '@shared/models';
+import { Aluno, Treino } from '@shared/models';
 import { environment } from '@environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { BaseService } from './base.service';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AlunosService {
+export class AlunosService extends BaseService {
   constructor(
     public http: HttpClient
-  ) { }
+  ) {
+    super();
+   }
 
   listAll(): Observable<Aluno[]> {
     return this.http
       .get<Aluno[]>(`${environment.API_ENDPOINT}/alunos`);
   }
 
-  save(aluno: Aluno) {
+  save(aluno: Aluno): Observable<Aluno> {
     return this.http
-      .post(`${environment.API_ENDPOINT}/alunos`, aluno);
+      .post(`${environment.API_ENDPOINT}/alunos`, aluno)
+      .pipe(catchError(this.handleError<Aluno>('save', {} as Aluno)));
   }
 
   delete(id: number) {
@@ -27,13 +32,46 @@ export class AlunosService {
       .delete(`${environment.API_ENDPOINT}/alunos/${id}`);
   }
 
-  getAluno(id: number){
+  getAluno(id: number): Observable<Aluno>{
     return this.http
-      .get(`${environment.API_ENDPOINT}/alunos/${id}`);
+      .get(`${environment.API_ENDPOINT}/alunos/${id}`)
+      .pipe(catchError(this.handleError<Aluno>('save', {} as Aluno)));
   }
 
-  update(id: number, aluno: Aluno) {
+  update(id: number, aluno: Aluno): Observable<Aluno> {
     return this.http
-      .patch(`${environment.API_ENDPOINT}/alunos/${id}`, aluno);
+      .patch(`${environment.API_ENDPOINT}/alunos/${id}`, aluno)
+      .pipe(catchError(this.handleError<Aluno>('save', {} as Aluno)));
+  }
+
+  getTreinos(id: number): Observable<Treino[]> {
+    const queryParams = {
+      filter: JSON.stringify({
+        order: 'createdAt DESC',
+        limit: 1,
+        include: [{
+          relation: 'exercicios',
+          scope: {
+            include: [
+              {
+                relation: 'exercicio',
+                scope:  {
+                  include: [
+                    {
+                      relation: 'grupo'
+                    }
+                  ],
+                }
+              }
+            ],
+          }
+        }]
+      })
+    };
+    const params = new HttpParams({ fromObject: queryParams });
+
+    return this.http
+      .get(`${environment.API_ENDPOINT}/alunos/${id}/treinos` , {params})
+      .pipe(catchError(this.handleError<Treino[]>('save', {} as Treino[])));
   }
 }

@@ -39,7 +39,6 @@ export class AlunoFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.returnUrl = this.route.snapshot.queryParams.returnUrl ?? '/';
-    console.log('edit', this.returnUrl, this.route.snapshot.queryParams);
     this.route.params.subscribe((params: Params) => {
       this.alunoId = params.id;
       if (!!this.alunoId) {
