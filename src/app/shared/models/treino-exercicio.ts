@@ -1,3 +1,5 @@
+import { Exercicio } from './exercicio';
+
 export class TreinoExercicio {
   id?: number;
   carga: number;
@@ -8,5 +10,6 @@ export class TreinoExercicio {
   updatedAt?: string;
   treinoId?: number;
   exercicioId: number;
+  exercicio?: Exercicio;
 }
 

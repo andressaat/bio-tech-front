@@ -16,6 +16,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 const mm = [
@@ -34,7 +36,9 @@ const mm = [
   MatStepperModule,
   FlexLayoutModule,
   MatExpansionModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatDividerModule,
+  MatListModule
 ];
 
 @NgModule({

@@ -44,6 +44,7 @@ atendente@biotech.com.br 12345678
 
 ng generate module layout/treinos --route treinos --module layout/layout.module
 ng generate component layout/treinos/components/treino-stepper
+ng generate component layout/alunos/components/aluno
 ng g service shared/services/exercicios
 ng g service shared/services/Treino
 ng g service shared/services/GruposMusculares

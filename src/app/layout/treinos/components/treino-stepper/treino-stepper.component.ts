@@ -20,8 +20,6 @@ import {
   GruposMuscularesService,
   TreinoService,
 } from '@app/shared/services';
-import { forkJoin } from 'rxjs';
-import { mergeMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-treino-stepper',
