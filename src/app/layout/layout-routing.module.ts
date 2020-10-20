@@ -25,13 +25,46 @@ const routes: Routes = [
       {
         path: 'financeiro',
         loadChildren: () =>
-          import('./financeiro/financeiro.module').then((m) => m.FinanceiroModule),
+          import('./financeiro/financeiro.module').then(
+            (m) => m.FinanceiroModule
+          ),
         canActivate: [RoleGuard],
         data: {
           allowedRoles: ['atendente', 'gerente'],
         },
       },
-      { path: 'treinos', loadChildren: () => import('./treinos/treinos.module').then(m => m.TreinosModule) },
+      {
+        path: 'treinos',
+        loadChildren: () =>
+          import('./treinos/treinos.module').then((m) => m.TreinosModule),
+        canActivate: [RoleGuard],
+        data: {
+          allowedRoles: ['instrutor', 'gerente'],
+        },
+      },
+
+      {
+        path: 'avaliacao-fisica',
+        loadChildren: () =>
+          import('./avaliacao-fisica/avaliacao-fisica.module').then(
+            (m) => m.AvaliacaoFisicaModule
+          ),
+        canActivate: [RoleGuard],
+        data: {
+          allowedRoles: ['gerente', 'nutricionista'],
+        },
+      },
+      {
+        path: 'dieta-nutricional',
+        loadChildren: () =>
+          import('./dieta-nutricional/dieta-nutricional.module').then(
+            (m) => m.DietaNutricionalModule
+          ),
+        canActivate: [RoleGuard],
+        data: {
+          allowedRoles: ['gerente', 'nutricionista'],
+        },
+      },
     ],
   },
 ];

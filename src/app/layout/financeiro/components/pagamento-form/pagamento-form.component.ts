@@ -40,7 +40,6 @@ export class PagamentoFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.returnUrl = this.route.snapshot.queryParams.returnUrl ?? '/';
-    console.log('edit', this.returnUrl, this.route.snapshot.queryParams);
     this.route.params.subscribe((params: Params) => {
       this.pagamentoId = params.id;
       if (!!this.pagamentoId) {

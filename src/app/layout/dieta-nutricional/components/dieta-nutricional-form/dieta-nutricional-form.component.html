@@ -1,0 +1,88 @@
+<div class="avaliacao-fisica-form-flex">
+  <mat-card>
+    <mat-toolbar color="primary-dark">{{dietaNutricionalId ?'Editar Dieta nutricional':'Cadastrar Dieta nutricional'}}
+    </mat-toolbar>
+    <mat-card-content>
+      <form class="example-form"
+            [formGroup]="form">
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Aluno</mat-label>
+          <mat-select formControlName="alunoId">
+            <mat-option *ngFor="let alunos of alunos"
+                        [value]="alunos.id">
+              {{alunos.nome}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Refeição</mat-label>
+          <mat-select formControlName="refeicao">
+            <mat-option *ngFor="let refeicao of refeicoes"
+                        [value]="refeicao.value">
+              {{refeicao.label}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Segunda-feira</mat-label>
+          <textarea matInput
+                    formControlName="segunda"
+                    placeholder="Segunda-feira"></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Terça-feira</mat-label>
+          <textarea matInput
+                    formControlName="terca"
+                    placeholder="Terça-feira"></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Quarta-feira</mat-label>
+          <textarea matInput
+                    formControlName="quarta"
+                    placeholder="Quarta-feira"></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Quinta-feira</mat-label>
+          <textarea matInput
+                    formControlName="quinta"
+                    placeholder="Quinta-feira"></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Sexta-feira</mat-label>
+          <textarea matInput
+                    formControlName="sexta"
+                    placeholder="Sexta-feira"></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Sábado</mat-label>
+          <textarea matInput
+                    formControlName="sabado"
+                    placeholder="Sábado"></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Domingo</mat-label>
+          <textarea matInput
+                    formControlName="domingo"
+                    placeholder="Domingo"></textarea>
+        </mat-form-field>
+
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button
+              color="primary"
+              (click)="save()">Salvar</button>
+      <button mat-raised-button
+              (click)="cancel()">Cancel</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
