@@ -20,7 +20,7 @@
       <td mat-cell
           *matCellDef="let element">
         {{ element.nome }}
-        <a [routerLink]="['/alunos', element.id]"
+        <a [routerLink]="['/alunos/show/', element.id]"
            [state]="{id: element.id}">
           <mat-icon matListAvatar>account_box</mat-icon>
         </a>
