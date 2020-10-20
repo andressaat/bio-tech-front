@@ -10,7 +10,7 @@ import { RoleGuardService as RoleGuard } from '@app/auth/role-guard.service';
 const routes: Routes = [
   { path: '', component: AlunosComponent },
   {
-    path: ':id',
+    path: 'show/:id',
     component: AlunoComponent,
     canActivate: [RoleGuard],
     data: {
