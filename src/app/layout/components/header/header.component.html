@@ -1,9 +1,8 @@
 <mat-toolbar color="primary"
              *ngIf="isLoggedIn$ | async">
   <!-- <span>
-    <img src="assets/img/angular_whiteTransparent.svg"
+    <img src="assets/img/logo.png"
          class="angular-logo">
-    Angular NavBar + Login Example #01
   </span> -->
   <span class="fill-remaining-space"></span>
   <button mat-button
@@ -12,6 +11,10 @@
           routerLink="financeiro">Financeiro</button>
   <button mat-button
           routerLink="treinos">Treinos</button>
+  <button mat-button
+          routerLink="avaliacao-fisica">Avaliação física</button>
+  <button mat-button
+          routerLink="dieta-nutricional">Dieta Nutricional</button>
   <button mat-button
           (click)="onLogout()">Logout</button>
 </mat-toolbar>

@@ -49,5 +49,15 @@ ng g service shared/services/exercicios
 ng g service shared/services/Treino
 ng g service shared/services/GruposMusculares
 
+ng generate module layout/avaliacao-fisica --route avaliacao-fisica --module layout/layout.module
+ng generate component layout/avaliacao-fisica/components/avaliacao-fisica
+ng generate component layout/avaliacao-fisica/components/avaliacao-fisica-form
+ng g service shared/services/avaliacao-fisica
+
+ng generate module layout/dieta-nutricional --route dieta-nutricional --module layout/layout.module
+ng generate component layout/dieta-nutricional/components/dieta-nutricional
+ng generate component layout/dieta-nutricional/components/dieta-nutricional-form
+ng g service shared/services/dieta-nutricional
+
 <https://dev.to/usmslm102/containerizing-angular-application-for-production-using-docker-3mhi>
 <https://medium.com/@wkrzywiec/build-and-run-angular-application-in-a-docker-container-b65dbbc50be8>

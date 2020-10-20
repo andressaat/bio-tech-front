@@ -70,7 +70,7 @@ export class AlunoComponent implements OnInit {
    */
   buildDataSource(): void {
     //
-    const data = this.treino.exercicios.map(exercise => {
+    const data = this.treino?.exercicios?.map(exercise => {
       return {
         exercicioId: exercise.id,
         nome: exercise?.exercicio?.nome,
@@ -82,7 +82,7 @@ export class AlunoComponent implements OnInit {
       };
     });
     //
-    this.dataSource = this.groupBy(this.groupingColumn, data , this.reducedGroups);
+    this.dataSource = this.groupBy(this.groupingColumn, data ?? [] , this.reducedGroups);
   }
 
   /**

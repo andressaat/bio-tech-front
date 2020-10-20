@@ -14,7 +14,7 @@ const routes: Routes = [
     component: AlunoComponent,
     canActivate: [RoleGuard],
     data: {
-      allowedRoles: ['atendente'],
+      allowedRoles: ['atendente', 'instrutor', 'nutricionista', 'gerente'],
     },
   },
   {
@@ -22,7 +22,7 @@ const routes: Routes = [
     component: AlunoFormComponent,
     canActivate: [RoleGuard],
     data: {
-      allowedRoles: ['atendente'],
+      allowedRoles: ['atendente', 'gerente'],
     },
   },
   {
@@ -30,7 +30,7 @@ const routes: Routes = [
     component: AlunoFormComponent,
     canActivate: [RoleGuard],
     data: {
-      allowedRoles: ['atendente'],
+      allowedRoles: ['atendente', 'gerente'],
     },
   },
 ];

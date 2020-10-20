@@ -1,0 +1,206 @@
+<div class="avaliacao-fisica-form-flex">
+  <mat-card>
+    <mat-toolbar color="primary-dark">{{avaliacaoFisicaId ?'Editar Avaliação Física':'Cadastrar Avaliação Física'}}
+    </mat-toolbar>
+    <mat-card-content>
+      <form class="example-form"
+            [formGroup]="form">
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Aluno</mat-label>
+          <mat-select formControlName="alunoId">
+            <mat-option *ngFor="let alunos of alunos"
+                        [value]="alunos.id">
+              {{alunos.nome}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Meta de Peso</mat-label>
+          <input currencyMask
+                 matInput
+                 formControlName="metaPeso"
+                 placeholder="Meta de Peso">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Peso Atual</mat-label>
+          <input currencyMask
+                 matInput
+                 formControlName="peso"
+                 placeholder="Peso Atual">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Altura</mat-label>
+          <input currencyMask
+                 matInput
+                 formControlName="altura"
+                 placeholder="Altura">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>IMC</mat-label>
+          <input currencyMask
+                 matInput
+                 formControlName="imc"
+                 placeholder="IMC">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Ombro</mat-label>
+          <input currencyMask
+                 matInput
+                 formControlName="ombro"
+                 placeholder="Ombro">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Peitoral</mat-label>
+          <input currencyMask
+                 matInput
+                 formControlName="peitoral"
+                 placeholder="Peitoral">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Cintura</mat-label>
+          <input currencyMask
+                 matInput
+                 formControlName="cintura"
+                 placeholder="Cintura">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Abdomen</mat-label>
+          <input currencyMask
+                 matInput
+                 formControlName="abdomen"
+                 placeholder="Abdomen">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Quadril</mat-label>
+          <input currencyMask
+                 matInput
+                 formControlName="quadril"
+                 placeholder="Quadril">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Panturrilha Direita</mat-label>
+          <input currencyMask
+                 matInput
+                 formControlName="panturrilhaDireita"
+                 placeholder="Panturrilha Direita">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Panturrilha Esquerda</mat-label>
+          <input currencyMask
+                 matInput
+                 formControlName="panturrilhaEsquerda"
+                 placeholder="Panturrilha Esquerda">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Pescoço</mat-label>
+          <input currencyMask
+                 matInput
+                 formControlName="pescoco"
+                 placeholder="Pescoço">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Punho</mat-label>
+          <input currencyMask
+                 matInput
+                 formControlName="punho"
+                 placeholder="Punho">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Coxa Direita</mat-label>
+          <input currencyMask
+                 matInput
+                 formControlName="coxaDireita"
+                 placeholder="Coxa Direita">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Coxa Esquerda</mat-label>
+          <input currencyMask
+                 matInput
+                 formControlName="coxaEsquerda"
+                 placeholder="Coxa Esquerda">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Coxa Proximal Direita</mat-label>
+          <input currencyMask
+                 matInput
+                 formControlName="coxaProximalDireita"
+                 placeholder="Coxa Proximal Direita">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Coxa Proximal Esquerda</mat-label>
+          <input currencyMask
+                 matInput
+                 formControlName="coxaProximalEsquerda"
+                 placeholder="Coxa Proximal Esquerda">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Braco Relaxado Direito</mat-label>
+          <input currencyMask
+                 matInput
+                 formControlName="bracoRelaxadoDireito"
+                 placeholder="Braco Relaxado Direito">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Braco Relaxado Esquerdo</mat-label>
+          <input currencyMask
+                 matInput
+                 formControlName="bracoRelaxadoEsquerdo"
+                 placeholder="Braco Relaxado Esquerdo">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Braço Contraído Direito</mat-label>
+          <input currencyMask
+                 matInput
+                 formControlName="bracoContraidoDireito"
+                 placeholder="Braço Contraído Direito">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Braço Contraído Esquerdo</mat-label>
+          <input currencyMask
+                 matInput
+                 formControlName="bracoContraidoEsquerdo"
+                 placeholder="Braço Contraído Esquerdo">
+        </mat-form-field>
+
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Antebraço</mat-label>
+          <input currencyMask
+                 matInput
+                 formControlName="antebraco"
+                 placeholder="Antebraço">
+        </mat-form-field>
+
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button
+              color="primary"
+              (click)="save()">Salvar</button>
+      <button mat-raised-button
+              (click)="cancel()">Cancel</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

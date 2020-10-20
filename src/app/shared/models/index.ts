@@ -7,3 +7,6 @@ export * from './exercicio';
 export * from './grupo-muscular';
 export * from './treino';
 export * from './treino-exercicio';
+export * from './user';
+export * from './avaliacao-fisica';
+export * from './dieta-nutricional';

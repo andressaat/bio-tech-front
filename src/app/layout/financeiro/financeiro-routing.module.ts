@@ -6,7 +6,14 @@ import { PagamentosComponent } from './components/pagamentos/pagamentos.componen
 import { RoleGuardService as RoleGuard } from '@app/auth/role-guard.service';
 
 const routes: Routes = [
-  { path: '', component: PagamentosComponent },
+  {
+    path: '',
+    component: PagamentosComponent,
+    canActivate: [RoleGuard],
+    data: {
+      allowedRoles: ['atendente', 'gerente'],
+    },
+  },
   {
     path: 'create',
     component: PagamentoFormComponent,
@@ -27,6 +34,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class FinanceiroRoutingModule { }
+export class FinanceiroRoutingModule {}
