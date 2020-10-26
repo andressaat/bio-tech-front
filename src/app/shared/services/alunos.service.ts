@@ -33,8 +33,50 @@ export class AlunosService extends BaseService {
   }
 
   getAluno(id: number): Observable<Aluno>{
+
+    const queryParams = {
+      filter: JSON.stringify({
+        include: [{
+          relation: 'treinos',
+          scope:{
+            order: 'createdAt DESC',
+            limit: 1,
+            include: [
+              {
+                relation: 'exercicios',
+                scope: {
+                  include: [
+                    {
+                      relation: 'exercicio',
+                      scope:  {
+                        include: [
+                          {
+                            relation: 'grupo'
+                          }
+                        ],
+                      }
+                    }
+                  ],
+                }
+              }
+            ]
+          },
+        },
+      {
+        relation: 'avaliacoesFisicas',
+        scope:{
+          order: 'createdAt DESC',
+          limit: 1
+        }
+      },{
+        relation: 'dietaNutricional'
+      }]
+      })
+    };
+    const params = new HttpParams({ fromObject: queryParams });
+
     return this.http
-      .get(`${environment.API_ENDPOINT}/alunos/${id}`)
+      .get(`${environment.API_ENDPOINT}/alunos/${id}`, {params})
       .pipe(catchError(this.handleError<Aluno>('save', {} as Aluno)));
   }
 

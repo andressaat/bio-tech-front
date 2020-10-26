@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Aluno, Treino } from '@app/shared/models';
+import { Aluno, AvaliacaoFisica, Treino } from '@app/shared/models';
 import { AlunosService, PacotesService } from '@app/shared/services';
 
 @Component({
@@ -14,6 +14,7 @@ export class AlunoComponent implements OnInit {
   returnUrl: string;
   aluno: Aluno;
   treino: Treino; // o Ultimo Treino cadastrado
+  avaliacaoFisica: AvaliacaoFisica; // o Ultimo AvaliacaoFisica cadastrada
   // Teste
   displayedColumns: string[] = [
     'nome',
@@ -33,9 +34,35 @@ export class AlunoComponent implements OnInit {
     'Domingo',
   ];
   dataSource: MatTableDataSource<any> = new MatTableDataSource([]);
+  dietaDataSource: MatTableDataSource<any> = new MatTableDataSource([]);
+  dietaDisplayedColumns: ['refeicao', 'segunda','terca','quarta','quinta','sexta','sabado','domingo']
   groupingColumn = 'nomeGrupo';
   reducedGroups = [];
   initialData: any[];
+  dictionaryAvaliacaoFisica =   {
+    metaPeso: "Meta Peso",
+    peso: "Peso",
+    altura: "Altura",
+    imc: "IMC",
+    ombro: "Ombro",
+    peitoral: "Peitoral",
+    cintura: "Cintura",
+    abdomen: "Abdomen",
+    quadril: "Quadril",
+    panturrilhaDireita: "Panturrilha Direita",
+    panturrilhaEsquerda: "Panturrilha Esquerda",
+    pescoco: "Pescoço",
+    punho: "Punho",
+    coxaDireita: "Coxa Direita",
+    coxaEsquerda: "Coxa Esquerda",
+    coxaProximalDireita: "Coxa Proximal Direita",
+    coxaProximalEsquerda: "Coxa Proximal Esquerda",
+    bracoRelaxadoDireito: "Braço Relaxado Direito",
+    bracoRelaxadoEsquerdo: "Braço Relaxado Esquerdo",
+    bracoContraidoDireito: "Braço Contraido Direito",
+    bracoContraidoEsquerdo: "Braço Contraido Esquerdo",
+    antebraco: "Antebraco",
+  }
 
   constructor(
     private alunosService: AlunosService,
@@ -51,13 +78,17 @@ export class AlunoComponent implements OnInit {
       if (!!this.alunoId) {
         this.alunosService.getAluno(this.alunoId).subscribe(aluno => {
           this.aluno = aluno;
-        });
-
-        this.alunosService.getTreinos(this.alunoId).subscribe(treinos => {
-          this.treino = treinos[0];
-          console.log(treinos[0]);
+          this.treino = aluno?.treinos[0];
+          this.avaliacaoFisica = aluno?.avaliacoesFisicas[0];
+          this.dietaDataSource = new MatTableDataSource(this.aluno?.dietaNutricional??[]);
           this.buildDataSource();
         });
+
+        // this.alunosService.getTreinos(this.alunoId).subscribe(treinos => {
+        //   this.treino = treinos[0];
+        //   console.log(treinos[0]);
+        //   this.buildDataSource();
+        // });
       }
     });
   }

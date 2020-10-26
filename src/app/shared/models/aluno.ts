@@ -1,3 +1,6 @@
+import { AvaliacaoFisica } from './avaliacao-fisica';
+import { Treino } from './treino';
+
 export interface Aluno {
     id?: number;
     nome: string;
@@ -12,4 +15,7 @@ export interface Aluno {
     createdAt?: string;
     updatedAt?: string;
     pacoteId: number;
+    treinos?: Treino[];
+    avaliacoesFisicas?: AvaliacaoFisica[];
+    dietaNutricional?: any[]
 }
