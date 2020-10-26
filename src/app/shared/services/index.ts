@@ -6,3 +6,4 @@ export * from './exercicios.service';
 export * from './treino.service';
 export * from './avaliacao-fisica.service';
 export * from './dieta-nutricional.service';
+export * from './produtos.service';

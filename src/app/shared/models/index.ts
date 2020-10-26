@@ -10,3 +10,6 @@ export * from './treino-exercicio';
 export * from './user';
 export * from './avaliacao-fisica';
 export * from './dieta-nutricional';
+export * from './produto';
+export * from './item-pedido';
+export * from './pedido';
