@@ -48,21 +48,34 @@
   </mat-card>
 
   <!-- Avaliação Fisica -->
-  <div class="basic-container" *ngIf="avaliacaoFisica">
-    <p class="mat-headline" [style.marginTop]="'10px'">
-      Avaliação Física
-    </p>
-    <p matLine>
-      {{avaliacaoFisica?.createdAt | dateFormat}}
-    </p>
-    <mat-grid-list cols="2" rowHeight="fit" gutterSize="5px" [style.height]="'900px'">
+
+  <div class="basic-container"
+       *ngIf="avaliacaoFisica">
+    <mat-card flex-gt-sm
+              [style.marginTop]="'5px'"
+              [style.marginBottom]="'5px'">
+
+      <p class="mat-headline"
+         [style.marginTop]="'10px'">
+        Avaliação Física
+      </p>
+      <p matLine>
+        {{avaliacaoFisica?.createdAt | dateFormat}}
+      </p>
+
+    </mat-card>
+    <mat-grid-list cols="2"
+                   rowHeight="fit"
+                   gutterSize="5px"
+                   [style.height]="'900px'">
       <div *ngFor="let item of avaliacaoFisica | keyvalue">
-        <mat-grid-tile *ngIf="dictionaryAvaliacaoFisica[item.key]" >
+        <mat-grid-tile *ngIf="dictionaryAvaliacaoFisica[item.key]">
           <mat-card [style.width]="'100%'">
             <div fxLayout="row">
-              <div fxFlex fxFlexAlign="center">
+              <div fxFlex
+                   fxFlexAlign="center">
                 <div fxLayout="row">
-                {{dictionaryAvaliacaoFisica[item.key]}}
+                  {{dictionaryAvaliacaoFisica[item.key]}}
                 </div>
                 <div fxLayout="row">
                   {{item.value}}
@@ -78,8 +91,9 @@
 
   <!-- Avaliação Fisica -->
 
-
-  <mat-card flex-gt-sm *ngIf="treino?.exercicios?.length" [style.marginTop]="'10px'">
+  <mat-card flex-gt-sm
+            *ngIf="treino?.exercicios?.length"
+            [style.marginTop]="'5px'">
     <p class="mat-headline">
       Treino: {{treino?.nome}}
     </p>
@@ -146,43 +160,86 @@
     <!-- Tabela -->
   </mat-card>
 
-  <mat-card>
+
+  <mat-card flex-gt-sm
+            *ngIf="dietaNutricional?.length">
+    <p class="mat-headline">
+      Deita
+    </p>
     <table mat-table
-    [dataSource]="dietaDataSource"
-    class="mat-elevation-z8"
-    style="margin: 0 auto;">
+           [dataSource]="dietaDataSource"
+           class="mat-elevation-z8">{{dietaDataSource.data|json}}
 
-<!-- ID Column -->
-<ng-container matColumnDef="refeicao">
- <th mat-header-cell
-     *matHeaderCellDef> Refeição </th>
- <td mat-cell
-     *matCellDef="let element"> {{ element.refeicao }} </td>
-</ng-container>
+      <!-- ID Column -->
+      <ng-container matColumnDef="refeicao">
+        <th mat-header-cell
+            *matHeaderCellDef> Refeição </th>
+        <td mat-cell
+            *matCellDef="let row"> {{ dictionaryRefeicoes[row.refeicao] }} </td>
+      </ng-container>
 
-<!-- Name Column -->
-<ng-container matColumnDef="segunda">
- <th mat-header-cell
-     *matHeaderCellDef> Segunda </th>
- <td mat-cell
-     *matCellDef="let element">
-   {{ element.segunda }}
- </td>
-</ng-container>
+      <!-- Name Column -->
+      <ng-container matColumnDef="segunda">
+        <th mat-header-cell
+            *matHeaderCellDef> Segunda </th>
+        <td mat-cell
+            *matCellDef="let row">
+          {{ row.segunda }}
+        </td>
+      </ng-container>
 
-<!-- Name Column -->
-<ng-container matColumnDef="terca">
- <th mat-header-cell
-     *matHeaderCellDef> Terça </th>
- <td mat-cell
-     *matCellDef="let element"> {{ element.terca }} </td>
-</ng-container>
+      <!-- Name Column -->
+      <ng-container matColumnDef="terca">
+        <th mat-header-cell
+            *matHeaderCellDef> Terça </th>
+        <td mat-cell
+            *matCellDef="let row"> {{ row.terca }} </td>
+      </ng-container>
 
-<tr mat-header-row
-   *matHeaderRowDef="dietaDisplayedColumns"></tr>
-<tr mat-row
-   *matRowDef="let row; columns: dietaDisplayedColumns;"></tr>
-</table>
+      <ng-container matColumnDef="quarta">
+        <th mat-header-cell
+            *matHeaderCellDef> Quarta </th>
+        <td mat-cell
+            *matCellDef="let row"> {{ row.quarta }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="quinta">
+        <th mat-header-cell
+            *matHeaderCellDef> Quinta </th>
+        <td mat-cell
+            *matCellDef="let row"> {{ row.quinta }} </td>
+      </ng-container>
+
+
+
+      <ng-container matColumnDef="sexta">
+        <th mat-header-cell
+            *matHeaderCellDef> Sexta </th>
+        <td mat-cell
+            *matCellDef="let row"> {{ row.sexta }} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="sabado">
+        <th mat-header-cell
+            *matHeaderCellDef> Sábado </th>
+        <td mat-cell
+            *matCellDef="let row"> {{ row.sabado }} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="domingo">
+        <th mat-header-cell
+            *matHeaderCellDef> Domingo </th>
+        <td mat-cell
+            *matCellDef="let row"> {{ row.domingo }} </td>
+      </ng-container>
+
+      <tr mat-header-row
+          *matHeaderRowDef="dietaDisplayedColumns"></tr>
+      <tr mat-row
+          *matRowDef="let row; columns: dietaDisplayedColumns;"></tr>
+    </table>
   </mat-card>
 
 </div>

@@ -59,5 +59,8 @@ ng generate component layout/dieta-nutricional/components/dieta-nutricional
 ng generate component layout/dieta-nutricional/components/dieta-nutricional-form
 ng g service shared/services/dieta-nutricional
 
+ng g service shared/services/pedido
+ng generate component layout/loja/components/vendas
+
 <https://dev.to/usmslm102/containerizing-angular-application-for-production-using-docker-3mhi>
 <https://medium.com/@wkrzywiec/build-and-run-angular-application-in-a-docker-container-b65dbbc50be8>

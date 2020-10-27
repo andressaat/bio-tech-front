@@ -65,7 +65,7 @@ const routes: Routes = [
           allowedRoles: ['gerente', 'nutricionista'],
         },
       },
-      { path: 'loja', loadChildren: () => import('./loja/loja.module').then(m => m.LojaModule) },
+      { path: 'vendas', loadChildren: () => import('./loja/loja.module').then(m => m.LojaModule) },
     ],
   },
 ];

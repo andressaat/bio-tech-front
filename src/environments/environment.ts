@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  // API_ENDPOINT: 'http://ec2-18-218-167-211.us-east-2.compute.amazonaws.com:3000'
+  API_ENDPOINT: 'http://ec2-18-218-167-211.us-east-2.compute.amazonaws.com:3000'
   // API_ENDPOINT: 'http://192.168.99.100:3000' // docker
-  API_ENDPOINT: 'http://localhost:3000' // local
+  // API_ENDPOINT: 'http://localhost:3000' // local
 };
 
 /*

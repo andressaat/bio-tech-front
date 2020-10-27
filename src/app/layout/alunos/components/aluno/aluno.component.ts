@@ -15,6 +15,7 @@ export class AlunoComponent implements OnInit {
   aluno: Aluno;
   treino: Treino; // o Ultimo Treino cadastrado
   avaliacaoFisica: AvaliacaoFisica; // o Ultimo AvaliacaoFisica cadastrada
+  dietaNutricional: any[];
   // Teste
   displayedColumns: string[] = [
     'nome',
@@ -33,36 +34,46 @@ export class AlunoComponent implements OnInit {
     'Sábado',
     'Domingo',
   ];
+
   dataSource: MatTableDataSource<any> = new MatTableDataSource([]);
   dietaDataSource: MatTableDataSource<any> = new MatTableDataSource([]);
-  dietaDisplayedColumns: ['refeicao', 'segunda','terca','quarta','quinta','sexta','sabado','domingo']
+  dietaDisplayedColumns: string[] = ['refeicao', 'segunda', 'terca', 'quarta', 'quinta', 'sexta', 'sabado', 'domingo'];
   groupingColumn = 'nomeGrupo';
   reducedGroups = [];
   initialData: any[];
   dictionaryAvaliacaoFisica =   {
-    metaPeso: "Meta Peso",
-    peso: "Peso",
-    altura: "Altura",
-    imc: "IMC",
-    ombro: "Ombro",
-    peitoral: "Peitoral",
-    cintura: "Cintura",
-    abdomen: "Abdomen",
-    quadril: "Quadril",
-    panturrilhaDireita: "Panturrilha Direita",
-    panturrilhaEsquerda: "Panturrilha Esquerda",
-    pescoco: "Pescoço",
-    punho: "Punho",
-    coxaDireita: "Coxa Direita",
-    coxaEsquerda: "Coxa Esquerda",
-    coxaProximalDireita: "Coxa Proximal Direita",
-    coxaProximalEsquerda: "Coxa Proximal Esquerda",
-    bracoRelaxadoDireito: "Braço Relaxado Direito",
-    bracoRelaxadoEsquerdo: "Braço Relaxado Esquerdo",
-    bracoContraidoDireito: "Braço Contraido Direito",
-    bracoContraidoEsquerdo: "Braço Contraido Esquerdo",
-    antebraco: "Antebraco",
-  }
+    metaPeso: 'Meta Peso',
+    peso: 'Peso',
+    altura: 'Altura',
+    imc: 'IMC',
+    ombro: 'Ombro',
+    peitoral: 'Peitoral',
+    cintura: 'Cintura',
+    abdomen: 'Abdomen',
+    quadril: 'Quadril',
+    panturrilhaDireita: 'Panturrilha Direita',
+    panturrilhaEsquerda: 'Panturrilha Esquerda',
+    pescoco: 'Pescoço',
+    punho: 'Punho',
+    coxaDireita: 'Coxa Direita',
+    coxaEsquerda: 'Coxa Esquerda',
+    coxaProximalDireita: 'Coxa Proximal Direita',
+    coxaProximalEsquerda: 'Coxa Proximal Esquerda',
+    bracoRelaxadoDireito: 'Braço Relaxado Direito',
+    bracoRelaxadoEsquerdo: 'Braço Relaxado Esquerdo',
+    bracoContraidoDireito: 'Braço Contraido Direito',
+    bracoContraidoEsquerdo: 'Braço Contraido Esquerdo',
+    antebraco: 'Antebraco',
+  };
+
+  dictionaryRefeicoes = {
+    cafe_manha: 'Café da Manhã',
+    lanche_manha: 'Lanche da Manhã',
+    almoco: 'Almoço',
+    lanche_tarde: 'Lanche da Tarde',
+    jantar: 'Jantar',
+    obrigacao: 'Obrigação'
+  };
 
   constructor(
     private alunosService: AlunosService,
@@ -80,7 +91,8 @@ export class AlunoComponent implements OnInit {
           this.aluno = aluno;
           this.treino = aluno?.treinos[0];
           this.avaliacaoFisica = aluno?.avaliacoesFisicas[0];
-          this.dietaDataSource = new MatTableDataSource(this.aluno?.dietaNutricional??[]);
+          this.dietaNutricional = aluno.dietaNutricional ?? [];
+          console.log('dietaNutricional', this.dietaNutricional);
           this.buildDataSource();
         });
 
@@ -100,6 +112,7 @@ export class AlunoComponent implements OnInit {
    * Rebuilds the datasource after any change to the criterions
    */
   buildDataSource(): void {
+    this.dietaDataSource = new MatTableDataSource(this.dietaNutricional);
     //
     const data = this.treino?.exercicios?.map(exercise => {
       return {
