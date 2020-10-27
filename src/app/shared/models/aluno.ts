@@ -17,5 +17,5 @@ export interface Aluno {
     pacoteId: number;
     treinos?: Treino[];
     avaliacoesFisicas?: AvaliacaoFisica[];
-    dietaNutricional?: any[]
+    dietaNutricional?: any[];
 }

@@ -7,3 +7,4 @@ export * from './treino.service';
 export * from './avaliacao-fisica.service';
 export * from './dieta-nutricional.service';
 export * from './produtos.service';
+export * from './pedido.service';
